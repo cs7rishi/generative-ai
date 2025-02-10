@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/api")
@@ -15,7 +16,7 @@ public class StoryGenerationController {
     private StoryGenerationService storyGenerationService;
 
     @PostMapping("/create")
-    private String generateStory(@RequestBody String prompt){
+    private Flux<String> generateStory(@RequestBody String prompt){
         return storyGenerationService.generateStory(prompt);
     }
 }
